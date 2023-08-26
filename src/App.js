@@ -1,20 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import Image from "./Components/Image";
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
-import "./App.css"
+import 'swiper/css/scrollbar';
+
+import {Scrollbar, Mousewheel} from "swiper/modules";
 
 
-
-// import required modules
-import { Mousewheel, Pagination } from 'swiper/modules';
-
-
-// import ImageContainer from "./Components/ImageContainer";
 const raw_data = [
   {
     image: "onepiece.png",
@@ -49,70 +44,27 @@ const raw_data = [
 ]
 
 function App() {
-  const n = raw_data.length;
-
-  const [isPostClicked, setIsPostClicked] = useState(new Array(n).fill(false));
-  const [prevClicked, setPrevClicked] = useState(-1);
-  const [count,setCount] = useState(0);
-
-  const handleClick = (index) => {
-          setIsPostClicked((prev_state) => {
-            let new_state = prev_state;
-            new_state[index] = true;
-            if(prevClicked!== -1) {
-              new_state[prevClicked] = false;
-            }
-            return new_state;
-          })
-           if(count === 0) {
-            setPrevClicked(-1);
-           }
-           else {
-             setPrevClicked(index);
-           }
-           setCount(count+1);
-  }
-
-  const new_data = raw_data.map((post, index) => {
-              return {
-                ...post,
-                isClicked: isPostClicked[index]
-              }
-  })
   return (
-    // <div class='image-container'>
-    //   {
-    //     new_data.map((image, index) => {
-    //       return (
-    //        
-    //       )
-    //     })
-    //   }
-   
-    // </div>
-    <>
-    <Swiper direction={'horizontal'}
-        slidesPerView={2}
-        spaceBetween={3}
-        mousewheel={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Mousewheel, Pagination]}
-        className="mySwiper"
-        >
-          {
-            new_data.map((image, index) => {
-              return (
-                <SwiperSlide>
-                    <Image src = {image.image} alt = {image.alt} index={index} key ={image.id} isClicked={image.isClicked} onClick={handleClick} />
-                </SwiperSlide>
-              )
-            })
-          }
-
-    </Swiper>
-    </>
+   <>
+   <Swiper
+    scrollbar={{
+      hide: false,
+    }}
+    spaceBetween={0}
+    slidesPerView={3}
+    mousewheel={true}
+    modules={[Scrollbar, Mousewheel]}
+    className="mySwiper"
+   >
+    {
+      raw_data.map((image) => {
+       return  <SwiperSlide>
+              <Image src={image.image} alt={image.alt} />
+        </SwiperSlide> 
+      })
+    }
+   </Swiper>
+   </>
   );
 }
 

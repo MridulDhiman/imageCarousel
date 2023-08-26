@@ -1,18 +1,12 @@
 import React from "react";
 import "./Image.css";
 
-const Image = ({src, alt, isClicked, onClick, index}) => {
-
-  
-   
-     const handleClick = () => {
-        onClick(index);
-     }
+const Image = ({src, alt}) => {
       
     return (
-        <div class="carousel-img-container">
-        <img class={`carousel-img ${isClicked && "active"}`}  src={src} alt={alt} onClick={handleClick}  />
-        </div>
+        // <div class="carousel-img-container">
+        <img className={`carousel-img`}  src={src} alt={alt}   />
+        // </div>
     )
 }
 
