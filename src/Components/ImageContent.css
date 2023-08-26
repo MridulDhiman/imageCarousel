@@ -1,0 +1,21 @@
+.content-container {
+    text-align: justify;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+             1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    width: 100%;
+    overflow-wrap: break-word;
+    padding: 0 1px; 
+}
+
+.manga-name {
+
+    display: none;
+}
+
+.desc {
+    display: none;
+}
+

@@ -9,7 +9,7 @@ const ImageList = ({items}) => {
         <div className="carousel">
         {
             items.map((image) => {
-                return <Image key={image.id} src={image.image} alt={image.alt} />
+                return <Image key={image.id} src={image.image} alt={image.alt} name={image.alt} desc={image.desc} />
                })
         }
         </div>
