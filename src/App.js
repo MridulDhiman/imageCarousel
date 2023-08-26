@@ -42,7 +42,6 @@ const raw_data = [
 
 function App() {
 
-   
   return (
     <ImageList items={raw_data}/>
   );
