@@ -1,14 +1,5 @@
 import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import Image from "./Components/Image";
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/scrollbar';
-
-import {Scrollbar, Mousewheel} from "swiper/modules";
-
+import ImageList from "./Components/ImageList";
 
 const raw_data = [
   {
@@ -45,26 +36,7 @@ const raw_data = [
 
 function App() {
   return (
-   <>
-   <Swiper
-    scrollbar={{
-      hide: false,
-    }}
-    spaceBetween={0}
-    slidesPerView={3}
-    mousewheel={true}
-    modules={[Scrollbar, Mousewheel]}
-    className="mySwiper"
-   >
-    {
-      raw_data.map((image) => {
-       return  <SwiperSlide>
-              <Image src={image.image} alt={image.alt} />
-        </SwiperSlide> 
-      })
-    }
-   </Swiper>
-   </>
+    <ImageList items={raw_data}/>
   );
 }
 
